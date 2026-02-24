@@ -24,7 +24,7 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="#home" className="font-bold text-xl">
-              YourBrand
+              XerveLab
             </a>
           </div>
 

@@ -14,7 +14,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
-            <div className="font-bold text-xl mb-4">YourBrand</div>
+            <div className="font-bold text-xl mb-4">XerveLab</div>
             <p className="text-sm text-muted-foreground mb-4">
               Building the future of work, one feature at a time.
             </p>
@@ -74,7 +74,7 @@ export function Footer() {
 
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2026 YourBrand. All rights reserved.
+            © 2026 XerveLab. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">

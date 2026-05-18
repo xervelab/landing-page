@@ -10,7 +10,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/landing-page/',
+  // base: '/landing-page/', //this is needed if you are hosting on github pages, but not needed for local development
   resolve: {
     alias: {
       // Alias @ to the src directory

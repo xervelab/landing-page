@@ -1,6 +1,8 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { AnimateOnScroll } from "./animate-on-scroll";
+import { CountUp } from "./count-up";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -51,6 +53,7 @@ export function TestimonialsSection() {
   return (
     <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
       <div className="max-w-7xl mx-auto">
+        <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
             What Our Clients Say
@@ -59,10 +62,12 @@ export function TestimonialsSection() {
             Don't just take our word for it. Here's what our customers have to say.
           </p>
         </div>
+        </AnimateOnScroll>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
+            <AnimateOnScroll key={index} animation="fade-up" delay={index * 100}>
+            <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -95,14 +100,18 @@ export function TestimonialsSection() {
                 </div>
               </CardContent>
             </Card>
+            </AnimateOnScroll>
           ))}
         </div>
 
         {/* Social Proof */}
+        <AnimateOnScroll animation="fade-up">
         <div className="bg-card rounded-lg p-8 border border-border">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold mb-2">4.9/5</div>
+              <div className="text-4xl font-bold mb-2">
+                <CountUp end={4.9} decimals={1} suffix="/5" recount />
+              </div>
               <div className="text-sm text-muted-foreground">Average Rating</div>
               <div className="flex items-center justify-center gap-1 mt-2">
                 {[...Array(5)].map((_, i) => (
@@ -114,25 +123,32 @@ export function TestimonialsSection() {
               </div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">10K+</div>
+              <div className="text-4xl font-bold mb-2">
+                <CountUp end={10} suffix="K+" recount />
+              </div>
               <div className="text-sm text-muted-foreground">Happy Customers</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">5K+</div>
+              <div className="text-4xl font-bold mb-2">
+                <CountUp end={5} suffix="K+" recount />
+              </div>
               <div className="text-sm text-muted-foreground">5-Star Reviews</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">98%</div>
+              <div className="text-4xl font-bold mb-2">
+                <CountUp end={98} suffix="%" recount />
+              </div>
               <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
             </div>
           </div>
         </div>
+        </AnimateOnScroll>
 
         {/* Trust Badges */}
         <div className="mt-12 text-center">
           <p className="text-sm text-muted-foreground mb-6">Trusted by leading companies worldwide</p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
-            {["Google", "Microsoft", "Amazon", "Netflix", "Spotify", "Adobe"].map((company) => (
+            {["Gijey's Diner", "TechCorp", "InnovateX", "Global Solutions"].map((company) => (
               <div key={company} className="font-bold text-xl">
                 {company}
               </div>

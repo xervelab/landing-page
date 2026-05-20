@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { AnimateOnScroll } from "./animate-on-scroll";
 
 export function PricingSection() {
   const plans = [
@@ -58,6 +59,7 @@ export function PricingSection() {
   return (
     <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
       <div className="max-w-7xl mx-auto">
+        <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
             Simple, Transparent Pricing
@@ -66,11 +68,12 @@ export function PricingSection() {
             Choose the plan that's right for you. All plans include a 14-day free trial.
           </p>
         </div>
+        </AnimateOnScroll>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {plans.map((plan, index) => (
+            <AnimateOnScroll key={index} animation="fade-up" delay={index * 150}>
             <Card
-              key={index}
               className={`relative ${
                 plan.highlighted
                   ? "border-primary shadow-xl scale-105"
@@ -109,6 +112,7 @@ export function PricingSection() {
                 </ul>
               </CardContent>
             </Card>
+            </AnimateOnScroll>
           ))}
         </div>
 

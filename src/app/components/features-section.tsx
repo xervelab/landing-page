@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { AnimateOnScroll } from "./animate-on-scroll";
 
 export function FeaturesSection() {
   const features = [
@@ -64,6 +65,7 @@ export function FeaturesSection() {
   return (
     <section id="features" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+        <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
             Powerful Features
@@ -72,6 +74,7 @@ export function FeaturesSection() {
             Everything you need to succeed, all in one place
           </p>
         </div>
+        </AnimateOnScroll>
 
         <Tabs defaultValue="all" className="mb-12">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
@@ -83,7 +86,8 @@ export function FeaturesSection() {
           <TabsContent value="all" className="mt-12">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((feature, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
+                <AnimateOnScroll key={index} animation="fade-up" delay={index * 80}>
+                <Card className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
                       {feature.icon}
@@ -94,6 +98,7 @@ export function FeaturesSection() {
                     </p>
                   </CardContent>
                 </Card>
+                </AnimateOnScroll>
               ))}
             </div>
           </TabsContent>

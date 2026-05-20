@@ -3,6 +3,7 @@ import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { AnimateOnScroll } from "./animate-on-scroll";
 
 export function BlogSection() {
   const posts = [
@@ -65,6 +66,7 @@ export function BlogSection() {
   return (
     <section id="blog" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+        <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
             Latest from Our Blog
@@ -73,10 +75,12 @@ export function BlogSection() {
             Stay updated with the latest news, insights, and best practices
           </p>
         </div>
+        </AnimateOnScroll>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {posts.map((post, index) => (
-            <Card key={index} className="overflow-hidden group hover:shadow-xl transition-shadow">
+            <AnimateOnScroll key={index} animation="fade-up" delay={index * 100}>
+            <Card className="overflow-hidden group hover:shadow-xl transition-shadow">
               <div className="relative overflow-hidden">
                 <ImageWithFallback
                   src={post.image}
@@ -114,6 +118,7 @@ export function BlogSection() {
                 </div>
               </CardContent>
             </Card>
+            </AnimateOnScroll>
           ))}
         </div>
 

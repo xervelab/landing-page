@@ -4,16 +4,19 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { AnimateOnScroll } from "./animate-on-scroll";
+import { CountUp } from "./count-up";
 
 export function PortfolioSection() {
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "San Vicente BIS",
       category: "Web Development",
-      description: "A modern e-commerce solution with advanced features",
-      image: "https://images.unsplash.com/photo-1661956602116-aa6865609028",
-      tags: ["React", "Node.js", "MongoDB"],
+      description: "A modern information system for Barangay San Vicente managing residents, issuing certificates, tracking incidents, and serving the community efficiently.",
+      image: "images/projects/san-vicente-bis.png",
+      tags: ["React", "Laravel", "MySQL"],
       results: "+150% conversion rate",
+      link: "https://san-vicente-bis.vercel.app/",
     },
     {
       title: "Mobile Banking App",
@@ -22,6 +25,7 @@ export function PortfolioSection() {
       image: "https://images.unsplash.com/photo-1563986768609-322da13575f3",
       tags: ["React Native", "TypeScript", "AWS"],
       results: "500K+ downloads",
+      link: "https://san-vicente-bis.vercel.app/",
     },
     {
       title: "AI Analytics Dashboard",
@@ -30,6 +34,7 @@ export function PortfolioSection() {
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
       tags: ["Python", "TensorFlow", "React"],
       results: "40% faster insights",
+      link: "https://san-vicente-bis.vercel.app/",
     },
     {
       title: "Social Media Platform",
@@ -38,6 +43,7 @@ export function PortfolioSection() {
       image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
       tags: ["Vue.js", "GraphQL", "PostgreSQL"],
       results: "1M+ active users",
+      link: "https://san-vicente-bis.vercel.app/",
     },
     {
       title: "Healthcare Management",
@@ -46,6 +52,7 @@ export function PortfolioSection() {
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d",
       tags: ["Angular", "Java", "Oracle"],
       results: "85% efficiency boost",
+      link: "https://san-vicente-bis.vercel.app/",
     },
     {
       title: "EdTech Learning Portal",
@@ -54,6 +61,7 @@ export function PortfolioSection() {
       image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8",
       tags: ["Next.js", "Prisma", "Stripe"],
       results: "50K+ students",
+      link: "https://san-vicente-bis.vercel.app/",
     },
   ];
 
@@ -62,6 +70,7 @@ export function PortfolioSection() {
   return (
     <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+        <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
             Our Portfolio
@@ -70,6 +79,7 @@ export function PortfolioSection() {
             Explore our successful projects and case studies
           </p>
         </div>
+        </AnimateOnScroll>
 
         <Tabs defaultValue="All" className="mb-12">
           <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 lg:grid-cols-6">
@@ -86,7 +96,8 @@ export function PortfolioSection() {
                 {projects
                   .filter((project) => category === "All" || project.category === category)
                   .map((project, index) => (
-                    <Card key={index} className="overflow-hidden group hover:shadow-xl transition-shadow">
+                    <AnimateOnScroll key={index} animation="fade-up" delay={index * 100}>
+                    <Card className="overflow-hidden group hover:shadow-xl transition-shadow">
                       <div className="relative overflow-hidden">
                         <ImageWithFallback
                           src={project.image}
@@ -113,12 +124,15 @@ export function PortfolioSection() {
                           <span className="text-sm font-medium text-primary">
                             {project.results}
                           </span>
-                          <Button variant="ghost" size="sm" className="gap-2">
-                            View Case Study <ExternalLink className="h-4 w-4" />
+                          <Button variant="ghost" size="sm">
+                            <a href={project.link} className="inline-flex items-center gap-2 justify-between" target="_blank" rel="noopener noreferrer">
+                              View details <ExternalLink className="h-4 w-4" />
+                            </a>
                           </Button>
                         </div>
                       </CardContent>
                     </Card>
+                    </AnimateOnScroll>
                   ))}
               </div>
             </TabsContent>
@@ -127,19 +141,46 @@ export function PortfolioSection() {
 
         {/* Stats Section */}
         <div className="mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { number: "200+", label: "Projects Completed" },
-            { number: "98%", label: "Client Satisfaction" },
-            { number: "50+", label: "Industry Awards" },
-            { number: "24/7", label: "Support Available" },
-          ].map((stat, index) => (
-            <Card key={index}>
+          <AnimateOnScroll animation="zoom-in" delay={0}>
+            <Card>
               <CardContent className="p-6 text-center">
-                <div className="text-4xl font-bold mb-2">{stat.number}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-4xl font-bold mb-2">
+                  <CountUp end={200} suffix="+" recount />
+                </div>
+                <div className="text-sm text-muted-foreground">Projects Completed</div>
               </CardContent>
             </Card>
-          ))}
+          </AnimateOnScroll>
+          <AnimateOnScroll animation="zoom-in" delay={100}>
+            <Card>
+              <CardContent className="p-6 text-center">
+                <div className="text-4xl font-bold mb-2">
+                  <CountUp end={98} suffix="%" recount />
+                </div>
+                <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+              </CardContent>
+            </Card>
+          </AnimateOnScroll>
+          <AnimateOnScroll animation="zoom-in" delay={200}>
+            <Card>
+              <CardContent className="p-6 text-center">
+                <div className="text-4xl font-bold mb-2">
+                  <CountUp end={50} suffix="+" recount />
+                </div>
+                <div className="text-sm text-muted-foreground">Industry Awards</div>
+              </CardContent>
+            </Card>
+          </AnimateOnScroll>
+          <AnimateOnScroll animation="zoom-in" delay={300}>
+            <Card>
+              <CardContent className="p-6 text-center">
+                <div className="text-4xl font-bold mb-2">
+                  <CountUp end={24} suffix="/7" recount />
+                </div>
+                <div className="text-sm text-muted-foreground">Support Available</div>
+              </CardContent>
+            </Card>
+          </AnimateOnScroll>
         </div>
       </div>
     </section>

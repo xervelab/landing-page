@@ -17,20 +17,14 @@ export function AboutSection() {
           <div>
             <h3 className="text-2xl sm:text-3xl mb-4">Our Story</h3>
             <p className="text-muted-foreground mb-4">
-              Founded in 2020, we started with a simple mission: to make technology
-              accessible and powerful for everyone. What began as a small team of
-              passionate developers has grown into a global company serving thousands
-              of customers worldwide.
+              Xerve Lab, established in 2025, is a technology solutions and outsourcing provider offering software development and IT services for global clients.
+              We support businesses by delivering cost-effective development services, including web applications, system maintenance, UI/UX design, and backend integration.
             </p>
             <p className="text-muted-foreground mb-4">
-              Today, we continue to innovate and push boundaries, always putting our
-              customers first. Our commitment to excellence and customer satisfaction
-              drives everything we do.
+              Our goal is to provide reliable remote development support while maintaining quality, efficiency, and clear communication throughout every project lifecycle.
             </p>
             <p className="text-muted-foreground">
-              We believe in building products that not only solve problems but also
-              delight users. Every feature, every design choice, and every line of code
-              is crafted with care and purpose.
+              We operate as an extension of our clients’ teams, ensuring productivity and long-term collaboration.
             </p>
           </div>
           <div className="rounded-xl overflow-hidden shadow-xl">

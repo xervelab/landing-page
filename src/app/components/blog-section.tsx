@@ -68,7 +68,7 @@ export function BlogSection() {
       <div className="max-w-7xl mx-auto">
         <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
+          <h2 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
             Latest from Our Blog
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -129,7 +129,7 @@ export function BlogSection() {
         </div>
 
         {/* Newsletter Subscription */}
-        <div className="mt-20 bg-primary text-primary-foreground rounded-lg p-8 md:p-12">
+        <div className="mt-20 rounded-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 p-8 text-primary-foreground shadow-xl shadow-blue-500/15 md:p-12">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-2xl sm:text-3xl mb-4">Subscribe to Our Newsletter</h3>
             <p className="mb-6 opacity-90">

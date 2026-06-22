@@ -39,7 +39,7 @@ export function HeroSection() {
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll animation="fade-up" delay={100}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-6">
+              <h1 className="mb-6 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-4xl text-transparent sm:text-5xl lg:text-6xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
                 Transform Your Business with Our Solutions
               </h1>
             </AnimateOnScroll>
@@ -51,8 +51,10 @@ export function HeroSection() {
             </AnimateOnScroll>
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button size="lg" className="gap-2">
-                  Get Started <ArrowRight className="h-4 w-4" />
+                <Button asChild size="lg" className="gap-2">
+                  <a href="#/get-started">
+                    Get Started <ArrowRight className="h-4 w-4" />
+                  </a>
                 </Button>
                 <Button size="lg" variant="outline" className="gap-2">
                   <Play className="h-4 w-4" /> Watch Demo

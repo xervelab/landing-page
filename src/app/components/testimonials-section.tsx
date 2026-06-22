@@ -51,11 +51,11 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
+    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-violet-500/5 via-background/65 to-transparent">
       <div className="max-w-7xl mx-auto">
         <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
+          <h2 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
             What Our Clients Say
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -106,7 +106,7 @@ export function TestimonialsSection() {
 
         {/* Social Proof */}
         <AnimateOnScroll animation="fade-up">
-        <div className="bg-card rounded-lg p-8 border border-border">
+        <div className="rounded-lg border border-primary/10 bg-gradient-to-r from-card via-card to-primary/5 p-8 shadow-sm shadow-primary/5">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold mb-2">

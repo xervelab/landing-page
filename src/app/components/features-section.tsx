@@ -16,48 +16,66 @@ import { AnimateOnScroll } from "./animate-on-scroll";
 export function FeaturesSection() {
   const features = [
     {
-      icon: <Zap className="h-6 w-6" />,
+      icon: Zap,
       title: "Lightning Fast",
+      accent: "from-fuchsia-500/20 via-violet-500/10 to-transparent",
+      iconColor: "text-fuchsia-500",
       description: "Experience blazing fast performance with our optimized infrastructure."
     },
     {
-      icon: <Shield className="h-6 w-6" />,
+      icon: Shield,
       title: "Secure & Safe",
+      accent: "from-cyan-500/20 via-sky-500/10 to-transparent",
+      iconColor: "text-cyan-500",
       description: "Enterprise-grade security to protect your data and privacy."
     },
     {
-      icon: <Users className="h-6 w-6" />,
+      icon: Users,
       title: "Team Collaboration",
+      accent: "from-amber-500/20 via-orange-500/10 to-transparent",
+      iconColor: "text-amber-500",
       description: "Work seamlessly with your team in real-time."
     },
     {
-      icon: <BarChart className="h-6 w-6" />,
+      icon: BarChart,
       title: "Advanced Analytics",
+      accent: "from-emerald-500/20 via-teal-500/10 to-transparent",
+      iconColor: "text-emerald-500",
       description: "Get insights with powerful analytics and reporting tools."
     },
     {
-      icon: <Clock className="h-6 w-6" />,
+      icon: Clock,
       title: "24/7 Availability",
+      accent: "from-rose-500/20 via-pink-500/10 to-transparent",
+      iconColor: "text-rose-500",
       description: "Access your work anytime, anywhere with 99.9% uptime."
     },
     {
-      icon: <Smartphone className="h-6 w-6" />,
+      icon: Smartphone,
       title: "Mobile Ready",
+      accent: "from-indigo-500/20 via-blue-500/10 to-transparent",
+      iconColor: "text-indigo-500",
       description: "Fully responsive design works perfectly on all devices."
     },
     {
-      icon: <Cloud className="h-6 w-6" />,
+      icon: Cloud,
       title: "Cloud Storage",
+      accent: "from-sky-500/20 via-cyan-500/10 to-transparent",
+      iconColor: "text-sky-500",
       description: "Store and access your files securely in the cloud."
     },
     {
-      icon: <Lock className="h-6 w-6" />,
+      icon: Lock,
       title: "Data Privacy",
+      accent: "from-violet-500/20 via-purple-500/10 to-transparent",
+      iconColor: "text-violet-500",
       description: "Your data belongs to you. We never sell or share it."
     },
     {
-      icon: <Headphones className="h-6 w-6" />,
+      icon: Headphones,
       title: "Premium Support",
+      accent: "from-lime-500/20 via-green-500/10 to-transparent",
+      iconColor: "text-lime-500",
       description: "Get help from our expert support team whenever you need it."
     }
   ];
@@ -67,7 +85,7 @@ export function FeaturesSection() {
       <div className="max-w-7xl mx-auto">
         <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
+          <h2 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
             Powerful Features
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -87,10 +105,11 @@ export function FeaturesSection() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((feature, index) => (
                 <AnimateOnScroll key={index} animation="fade-up" delay={index * 80}>
-                <Card className="hover:shadow-lg transition-shadow">
+                <Card className="relative overflow-hidden border-border/70 bg-card/85 backdrop-blur-sm hover:shadow-lg transition-shadow">
+                  <div className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-br ${feature.accent}`} />
                   <CardContent className="p-6">
-                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
-                      {feature.icon}
+                    <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-background/80 shadow-sm ${feature.iconColor}`}>
+                      <feature.icon className="h-6 w-6" />
                     </div>
                     <h3 className="mb-2">{feature.title}</h3>
                     <p className="text-sm text-muted-foreground">

@@ -72,7 +72,7 @@ export function PortfolioSection() {
       <div className="max-w-7xl mx-auto">
         <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
+          <h2 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
             Our Portfolio
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -82,9 +82,13 @@ export function PortfolioSection() {
         </AnimateOnScroll>
 
         <Tabs defaultValue="All" className="mb-12">
-          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 lg:grid-cols-6">
+          <TabsList className="mx-auto grid h-auto w-full max-w-3xl grid-cols-2 gap-2 rounded-2xl p-2 sm:grid-cols-3 lg:grid-cols-6">
             {categories.map((category) => (
-              <TabsTrigger key={category} value={category} className="text-xs sm:text-sm">
+              <TabsTrigger
+                key={category}
+                value={category}
+                className="h-auto min-h-10 whitespace-normal px-3 py-2 text-center text-xs leading-tight sm:text-sm"
+              >
                 {category}
               </TabsTrigger>
             ))}

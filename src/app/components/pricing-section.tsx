@@ -11,6 +11,8 @@ export function PricingSection() {
       price: "$9",
       period: "/month",
       description: "Perfect for individuals and small projects",
+      accent: "from-fuchsia-500/20 via-violet-500/10 to-transparent",
+      iconColor: "text-fuchsia-500",
       features: [
         "Up to 5 projects",
         "Basic analytics",
@@ -25,6 +27,8 @@ export function PricingSection() {
       price: "$29",
       period: "/month",
       description: "Ideal for growing teams and businesses",
+      accent: "from-cyan-500/20 via-blue-500/10 to-transparent",
+      iconColor: "text-cyan-500",
       features: [
         "Unlimited projects",
         "Advanced analytics",
@@ -42,6 +46,8 @@ export function PricingSection() {
       price: "Custom",
       period: "",
       description: "For large organizations with specific needs",
+      accent: "from-amber-500/20 via-orange-500/10 to-transparent",
+      iconColor: "text-amber-500",
       features: [
         "Everything in Professional",
         "Unlimited storage",
@@ -57,11 +63,11 @@ export function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
+    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-cyan-500/5 via-background/65 to-transparent">
       <div className="max-w-7xl mx-auto">
         <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4">
+          <h2 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
             Simple, Transparent Pricing
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -74,15 +80,17 @@ export function PricingSection() {
           {plans.map((plan, index) => (
             <AnimateOnScroll key={index} animation="fade-up" delay={index * 150}>
             <Card
-              className={`relative ${
+              className={`relative border-border/70 bg-card/90 backdrop-blur-sm ${
                 plan.highlighted
-                  ? "border-primary shadow-xl scale-105"
+                  ? "border-primary/50 shadow-xl shadow-primary/10 scale-105"
                   : ""
               }`}
             >
+              <div className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-br ${plan.accent}`} />
+              <div className="h-1.5 w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500" />
               {plan.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground">
+                <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
+                  <Badge className="bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 text-white">
                     {plan.badge}
                   </Badge>
                 </div>
@@ -97,15 +105,21 @@ export function PricingSection() {
               </CardHeader>
               <CardContent>
                 <Button
+                  asChild
                   className="w-full mb-6"
                   variant={plan.highlighted ? "default" : "outline"}
                 >
-                  {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+                  <a
+                    className={plan.highlighted ? "bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 text-white hover:from-cyan-400 hover:via-blue-500 hover:to-violet-400" : ""}
+                    href={plan.name === "Enterprise" ? "#/get-started?plan=Enterprise" : `#/get-started?plan=${encodeURIComponent(plan.name)}`}
+                  >
+                    {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+                  </a>
                 </Button>
                 <ul className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <Check className={`h-5 w-5 ${plan.iconColor} flex-shrink-0 mt-0.5`} />
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}

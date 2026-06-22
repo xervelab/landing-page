@@ -8,17 +8,17 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "Services", href: "#features" },
     { name: "Portfolio", href: "#portfolio" },
+    { name: "About", href: "#about" },
     { name: "Testimonials", href: "#testimonials" },
+    { name: "Pricing", href: "#pricing" },
     { name: "Blog", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-border">
+    <nav className="fixed top-0 z-50 w-full border-b border-primary/10 bg-[linear-gradient(to_right,rgba(255,255,255,0.78),rgba(255,255,255,0.65),rgba(255,255,255,0.78))] backdrop-blur-md dark:bg-[linear-gradient(to_right,rgba(10,10,10,0.82),rgba(15,23,42,0.72),rgba(10,10,10,0.82))]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}

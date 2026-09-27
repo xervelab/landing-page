@@ -35,25 +35,30 @@ export function HeroSection() {
           <div className="text-center lg:text-left">
             <AnimateOnScroll animation="fade-down" duration={500}>
               <div className="inline-block mb-4 px-4 py-2 bg-accent rounded-full">
-                <span className="text-sm">🚀 New features available now</span>
+                <span className="text-sm flex items-center gap-2">
+                  <div className="relative flex items-center justify-center">
+                    <div className="h-3 w-3 bg-green-500 rounded-full" />
+                    <div className="absolute h-3 w-3 bg-green-400 rounded-full animate-ping" />
+                  </div>
+                  Professional web solutions for your business
+                </span>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll animation="fade-up" delay={100}>
               <h1 className="mb-6 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-4xl text-transparent sm:text-5xl lg:text-6xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
-                Transform Your Business with Our Solutions
+                Build Your Online Presence with XerveLab
               </h1>
             </AnimateOnScroll>
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Empower your team with cutting-edge tools and services designed to
-                streamline your workflow and boost productivity.
+                Professional websites, ready-to-use templates, and practical digital solutions for businesses, creators, and professionals.
               </p>
             </AnimateOnScroll>
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg" className="gap-2">
                   <a href="#/get-started">
-                    Get Started <ArrowRight className="h-4 w-4" />
+                    Explore Our Services <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" className="gap-2">

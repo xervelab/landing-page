@@ -2,14 +2,47 @@ import { Target, Eye, Heart } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { AnimateOnScroll } from "./animate-on-scroll";
+import { usePageSeo } from "./shared/use-page-seo";
 
 export function AboutSection() {
+  usePageSeo({
+    title: "About XerveLab",
+    description:
+      "Learn about XerveLab, a technology and outsourcing provider supporting global businesses with digital services and remote delivery teams.",
+    canonicalUrl: "https://xervelab.online/#/about",
+    ogTitle: "About XerveLab",
+    ogDescription:
+      "Our story, mission, vision, and values behind XerveLab's digital and outsourcing services.",
+    ogUrl: "https://xervelab.online/#/about",
+    twitterTitle: "About XerveLab",
+    twitterDescription:
+      "Discover the mission and team values driving XerveLab delivery.",
+    breadcrumbJsonLd: {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://xervelab.online/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "About",
+          item: "https://xervelab.online/#/about",
+        },
+      ],
+    },
+  });
+
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary/5 via-background/60 to-transparent">
       <div className="max-w-7xl mx-auto">
         <AnimateOnScroll animation="fade-up">
           <div className="text-center mb-16">
-            <h2 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">About Us</h2>
+            <h1 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">About Us</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Learn more about who we are and what drives us forward
             </p>

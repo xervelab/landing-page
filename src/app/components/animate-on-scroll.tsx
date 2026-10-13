@@ -18,9 +18,16 @@ export function AnimateOnScroll({
   threshold = 0.1,
 }: AnimateOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const prefersReducedMotion =
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const [isVisible, setIsVisible] = useState(prefersReducedMotion);
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -38,10 +45,12 @@ export function AnimateOnScroll({
     }
 
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [prefersReducedMotion, threshold]);
 
   const baseStyles: React.CSSProperties = {
-    transition: `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`,
+    transition: prefersReducedMotion
+      ? "none"
+      : `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`,
     transitionDelay: `${delay}ms`,
   };
 

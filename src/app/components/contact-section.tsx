@@ -5,16 +5,82 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { AnimateOnScroll } from "./animate-on-scroll";
+import { usePageSeo } from "./shared/use-page-seo";
 
 export function ContactSection() {
+  const faqs = [
+    {
+      q: "What are your business hours?",
+      a: "We're available Monday to Friday, 9am-6pm EST. Our support team responds within 24 hours.",
+    },
+    {
+      q: "Do you offer custom solutions?",
+      a: "Yes! We provide custom enterprise solutions tailored to your specific needs. Contact our sales team for more information.",
+    },
+    {
+      q: "What's your refund policy?",
+      a: "We offer a 30-day money-back guarantee. If you're not satisfied, we'll refund your purchase, no questions asked.",
+    },
+    {
+      q: "How can I schedule a demo?",
+      a: "You can schedule a demo by clicking the 'Watch Demo' button or contacting our sales team directly.",
+    },
+  ];
+
+  usePageSeo({
+    title: "Contact XerveLab",
+    description:
+      "Contact XerveLab for digital solutions, marketing support, and remote staffing inquiries.",
+    canonicalUrl: "https://xervelab.online/#/contact",
+    ogTitle: "Contact XerveLab",
+    ogDescription:
+      "Reach out to discuss your project requirements and service needs.",
+    ogUrl: "https://xervelab.online/#/contact",
+    twitterTitle: "Contact XerveLab",
+    twitterDescription:
+      "Talk to XerveLab about your next digital project.",
+    breadcrumbJsonLd: {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://xervelab.online/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Contact",
+          item: "https://xervelab.online/#/contact",
+        },
+      ],
+    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.a,
+          },
+        })),
+      },
+    ],
+  });
+
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-500/5 via-background/70 to-transparent">
       <div className="max-w-7xl mx-auto">
         <AnimateOnScroll animation="fade-up">
         <div className="text-center mb-16">
-          <h2 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
+          <h1 className="mb-4 bg-gradient-to-r from-foreground via-blue-600 to-violet-500 bg-clip-text text-3xl text-transparent sm:text-4xl lg:text-5xl dark:from-white dark:via-cyan-200 dark:to-violet-300">
             Get in Touch
-          </h2>
+          </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
@@ -183,24 +249,7 @@ export function ContactSection() {
           <h3 className="text-2xl text-center mb-8">Frequently Asked Questions</h3>
           </AnimateOnScroll>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {[
-              {
-                q: "What are your business hours?",
-                a: "We're available Monday to Friday, 9am-6pm EST. Our support team responds within 24 hours.",
-              },
-              {
-                q: "Do you offer custom solutions?",
-                a: "Yes! We provide custom enterprise solutions tailored to your specific needs. Contact our sales team for more information.",
-              },
-              {
-                q: "What's your refund policy?",
-                a: "We offer a 30-day money-back guarantee. If you're not satisfied, we'll refund your purchase, no questions asked.",
-              },
-              {
-                q: "How can I schedule a demo?",
-                a: "You can schedule a demo by clicking the 'Watch Demo' button or contacting our sales team directly.",
-              },
-            ].map((faq, index) => (
+            {faqs.map((faq, index) => (
               <AnimateOnScroll key={index} animation="fade-up" delay={index * 100}>
               <Card>
                 <CardContent className="p-6">

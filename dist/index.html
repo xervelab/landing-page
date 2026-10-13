@@ -3,15 +3,177 @@
   <html lang="en">
     <head>
       <meta charset="UTF-8" />
-      <link rel="icon" href="/landing-page/images/xl-logo.png" />
+      <link rel="icon" href="/images/xl-logo.png" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>XerveLab</title>
-      <script type="module" crossorigin src="/landing-page/assets/index-ve6WM6hQ.js"></script>
-      <link rel="stylesheet" crossorigin href="/landing-page/assets/index-BXT3FRNS.css">
+      <link rel="canonical" href="https://xervelab.online/" />
+      <meta
+        name="description"
+        content="XerveLab provides digital solutions, marketing services, and remote talent to help businesses build, operate, and scale online."
+      />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="XerveLab" />
+      <meta property="og:title" content="XerveLab | Build. Grow. Scale." />
+      <meta
+        property="og:description"
+        content="Digital solutions, marketing, and remote talent for businesses ready to grow."
+      />
+      <meta property="og:url" content="https://xervelab.online/" />
+      <meta property="og:image" content="https://xervelab.online/images/xl-logo.png" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="XerveLab | Build. Grow. Scale." />
+      <meta
+        name="twitter:description"
+        content="Digital solutions, marketing, and remote talent for businesses ready to grow."
+      />
+      <meta name="twitter:image" content="https://xervelab.online/images/xl-logo.png" />
+      <title>XerveLab | Build. Grow. Scale.</title>
+
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "XerveLab",
+          "url": "https://xervelab.online/",
+          "logo": "https://xervelab.online/images/xl-logo.png",
+          "description": "Digital solutions, marketing, and remote talent for businesses ready to grow.",
+          "sameAs": ["https://www.facebook.com/xervelab"]
+        }
+      </script>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "XerveLab",
+          "url": "https://xervelab.online/",
+          "description": "Build. Grow. Scale."
+        }
+      </script>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://xervelab.online/"
+            }
+          ]
+        }
+      </script>
+      <script type="module" crossorigin src="/assets/index-CJZzyO9s.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-DHBlewqp.css">
     </head>
 
     <body>
-      <div id="root"></div>
+      <!-- Loader disabled to show page content immediately on access -->
+      <div id="app-loader" style="
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: #0a0a0a;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      ">
+        <div style="position: relative; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center;">
+          <!-- Outer arc spinner -->
+          <div class="loader-ring loader-ring-outer"></div>
+          <!-- Inner arc spinner (counter-rotating) -->
+          <div class="loader-ring loader-ring-inner"></div>
+          <!-- Glow effect -->
+          <div class="loader-glow"></div>
+          <!-- Logo -->
+          <img
+            src="/images/Official-logo.png"
+            alt="Loading..."
+            style="
+              width: 90px;
+              height: 90px;
+              object-fit: contain;
+              image-rendering: -webkit-optimize-contrast;
+              animation: logo-glow 2s ease-in-out infinite;
+              filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.2));
+            "
+          />
+        </div>
+        <div style="margin-top: 1rem; max-width: 40rem; padding: 0 1rem; text-align: center; color: #e5e7eb;">
+          <p style="margin: 0; font-size: 1.5rem; line-height: 1.2; font-weight: 700;">Build Your Digital Team. Grow Your Business.</p>
+          <p style="margin: 0.75rem 0 0; font-size: 1rem; line-height: 1.5; color: #cbd5e1;">
+            XerveLab provides digital services, social media solutions, and skilled remote professionals to help businesses build, operate, and scale online.
+          </p>
+        </div>
+      </div>
+      <style>
+        .loader-ring {
+          position: absolute;
+          border-radius: 50%;
+          border: 2px solid transparent;
+        }
+        .loader-ring-outer {
+          inset: 0;
+          border-top-color: #3b82f6;
+          border-right-color: rgba(59, 130, 246, 0.3);
+          animation: spin-loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          box-shadow: 0 0 15px rgba(59, 130, 246, 0.2), inset 0 0 15px rgba(59, 130, 246, 0.05);
+        }
+        .loader-ring-inner {
+          inset: 8px;
+          border-bottom-color: #06b6d4;
+          border-left-color: rgba(6, 182, 212, 0.3);
+          animation: spin-loader-reverse 1.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          box-shadow: 0 0 10px rgba(6, 182, 212, 0.2), inset 0 0 10px rgba(6, 182, 212, 0.05);
+        }
+        .loader-glow {
+          position: absolute;
+          inset: 15px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+          animation: glow-pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse-loader {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.85; transform: scale(0.97); }
+        }
+        @keyframes logo-glow {
+          0%, 100% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.2)); }
+          50% { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 40px rgba(59, 130, 246, 0.4)); }
+        }
+        @keyframes spin-loader {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes spin-loader-reverse {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(-360deg); }
+        }
+        @keyframes glow-pulse {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.05); }
+        }
+        #app-loader.fade-out {
+          opacity: 0;
+          visibility: hidden;
+        }
+      </style>
+
+      <div id="root"></div>
+      <noscript>
+        <section style="padding: 2rem 1rem; max-width: 64rem; margin: 0 auto; font-family: Arial, sans-serif; color: #111827;">
+          <h1 style="margin: 0 0 0.75rem; font-size: 2rem; line-height: 1.2;">Build Your Digital Team. Grow Your Business.</h1>
+          <p style="margin: 0 0 1rem; font-size: 1.1rem; line-height: 1.6;">
+            XerveLab provides digital services, social media solutions, and skilled remote professionals to help businesses build, operate, and scale online.
+          </p>
+          <p style="margin: 0; font-size: 1rem; line-height: 1.6;">
+            Enable JavaScript for the full interactive experience, or contact us at
+            <a href="#/contact">Contact</a>
+            for service details.
+          </p>
+        </section>
+      </noscript>
     </body>
   </html>
   

@@ -1,12 +1,15 @@
 import { Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
+import { footerColumns } from "../navigation";
+import { AppPath } from "../routes";
 
-export function Footer() {
-  const footerLinks = {
-    Product: ["Features", "Pricing", "Security", "Updates", "Roadmap"],
-    Company: ["About Us", "Careers", "Press", "News", "Partners"],
-    Resources: ["Blog", "Documentation", "Help Center", "Community", "Status"],
-    Legal: ["Privacy", "Terms", "Cookie Policy", "Licenses", "Contact"],
-  };
+type FooterProps = {
+  currentPath: AppPath;
+};
+
+export function Footer({ currentPath }: FooterProps) {
+  const isHome = currentPath === "/";
+  const blogHref = isHome ? "#blog" : "#/";
+  const faqHref = isHome ? "#contact" : "#/contact";
 
   return (
     <footer className="border-t border-primary/10 bg-gradient-to-b from-background/70 via-background/85 to-primary/5 backdrop-blur-sm">
@@ -53,17 +56,23 @@ export function Footer() {
           </div>
 
           {/* Links Columns */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h4 className="mb-4">{category}</h4>
+          {footerColumns.map((column) => (
+            <div key={column.title}>
+              <h4 className="mb-4">{column.title}</h4>
               <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link}>
+                {column.links.map((link) => (
+                  <li key={link.name}>
                     <a
-                      href="#"
+                      href={
+                        link.name === "Blog Section"
+                          ? blogHref
+                          : link.name === "FAQ Section"
+                            ? faqHref
+                            : link.href
+                      }
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
-                      {link}
+                      {link.name}
                     </a>
                   </li>
                 ))}
@@ -77,13 +86,13 @@ export function Footer() {
             © 2026 XerveLab. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Cookies
             </a>
           </div>

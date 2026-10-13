@@ -1,18 +1,114 @@
-import { useEffect, useMemo, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 import { ThemeToggle } from "./theme-toggle";
 import {
   companyNavigationLinks,
   mobileNavigationGroups,
+  type NavLink,
   primaryNavigationLinks,
-  solutionsNavigationLinks,
 } from "../navigation";
 import { AppPath } from "../routes";
 
 type NavbarProps = {
   currentPath: AppPath;
 };
+
+type HoverDropdownProps = {
+  label: string;
+  links: NavLink[];
+  currentHref: string;
+};
+
+function HoverDropdown({ label, links, currentHref }: HoverDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hasActiveLink = links.some((link) => link.href === currentHref);
+
+  const cancelClose = () => {
+    if (closeTimeout.current) {
+      clearTimeout(closeTimeout.current);
+      closeTimeout.current = null;
+    }
+  };
+
+  const scheduleClose = () => {
+    cancelClose();
+    closeTimeout.current = setTimeout(() => {
+      setIsOpen(false);
+      closeTimeout.current = null;
+    }, 150);
+  };
+
+  useEffect(() => cancelClose, []);
+
+  return (
+    // Non-modal so opening the menu doesn't lock body scroll (which hides the scrollbar and shifts layout).
+    <DropdownMenu modal={false} open={isOpen} onOpenChange={setIsOpen}>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="ghost"
+          onMouseEnter={() => {
+            cancelClose();
+            setIsOpen(true);
+          }}
+          onMouseLeave={scheduleClose}
+          onPointerDown={(event) => {
+            // Hover already opens the menu for mouse users; prevent click from toggling it closed.
+            if (event.pointerType === "mouse") {
+              event.preventDefault();
+            }
+          }}
+          className={[
+            "relative h-auto gap-1 rounded-md px-2 py-1 text-sm hover:bg-transparent dark:hover:bg-transparent",
+            "after:absolute after:inset-x-2 after:-bottom-1 after:h-0.5 after:rounded-full after:bg-primary after:transition-opacity",
+            hasActiveLink
+              ? "font-medium text-foreground after:opacity-100"
+              : "font-normal text-muted-foreground hover:text-foreground after:opacity-0",
+          ].join(" ")}
+        >
+          {label}
+          <ChevronDown
+            className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+            aria-hidden="true"
+          />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="start"
+        onMouseEnter={cancelClose}
+        onMouseLeave={scheduleClose}
+        onCloseAutoFocus={(event) => event.preventDefault()}
+      >
+        {links.map((link) => {
+          const isActive = link.href === currentHref;
+
+          return (
+            <DropdownMenuItem key={link.name} asChild>
+              <a
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={
+                  isActive
+                    ? "relative cursor-pointer font-medium text-foreground before:absolute before:inset-y-1.5 before:left-0 before:w-0.5 before:rounded-full before:bg-primary"
+                    : "cursor-pointer"
+                }
+              >
+                {link.name}
+              </a>
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 export function Navbar({ currentPath }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,8 +143,11 @@ export function Navbar({ currentPath }: NavbarProps) {
     const isActive = normalizedCurrentPath === href;
 
     return [
-      "text-sm transition-colors rounded-md px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+      "relative text-sm transition-colors rounded-md px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+      "after:absolute after:inset-x-2 after:-bottom-1 after:h-0.5 after:rounded-full after:bg-primary after:transition-opacity",
+      isActive
+        ? "font-medium text-foreground after:opacity-100"
+        : "text-muted-foreground hover:text-foreground after:opacity-0",
     ].join(" ");
   };
 
@@ -72,21 +171,7 @@ export function Navbar({ currentPath }: NavbarProps) {
             </div>
 
             <div className="flex items-center gap-1 lg:border-l border-border lg:pl-6">
-              <span className="text-xs uppercase tracking-wide text-muted-foreground px-2">Solutions</span>
-              {solutionsNavigationLinks.map((link) => (
-                <a key={link.name} href={link.href} className={linkClasses(link.href)}>
-                  {link.name}
-                </a>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-1 lg:border-l border-border lg:pl-6">
-              <span className="text-xs uppercase tracking-wide text-muted-foreground px-2">Company</span>
-              {companyNavigationLinks.map((link) => (
-                <a key={link.name} href={link.href} className={linkClasses(link.href)}>
-                  {link.name}
-                </a>
-              ))}
+              <HoverDropdown label="Company" links={companyNavigationLinks} currentHref={normalizedCurrentPath} />
             </div>
           </div>
 

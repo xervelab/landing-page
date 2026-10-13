@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
+import { Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
 import { footerColumns } from "../navigation";
 import { AppPath } from "../routes";
 
@@ -23,31 +23,25 @@ export function Footer({ currentPath }: FooterProps) {
             </p>
             <div className="flex gap-3">
               <a
-                href="#"
-                className="h-8 w-8 rounded-full bg-muted flex items-center justify-center hover:bg-accent transition-colors"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
+                href="https://www.linkedin.com/company/xerve-lab"
                 className="h-8 w-8 rounded-full bg-muted flex items-center justify-center hover:bg-accent transition-colors"
               >
                 <Linkedin className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/xervelab"
                 className="h-8 w-8 rounded-full bg-muted flex items-center justify-center hover:bg-accent transition-colors"
               >
                 <Facebook className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/xervelab"
                 className="h-8 w-8 rounded-full bg-muted flex items-center justify-center hover:bg-accent transition-colors"
               >
                 <Instagram className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/@xervelab"
                 className="h-8 w-8 rounded-full bg-muted flex items-center justify-center hover:bg-accent transition-colors"
               >
                 <Youtube className="h-4 w-4" />

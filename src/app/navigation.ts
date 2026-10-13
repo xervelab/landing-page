@@ -8,12 +8,7 @@ export const primaryNavigationLinks: NavLink[] = [
   { name: "Digital Solutions", href: "#/digital-solutions" },
   { name: "Marketing", href: "#/marketing" },
   { name: "Remote Staffing", href: "#/staffing" },
-];
-
-export const solutionsNavigationLinks: NavLink[] = [
   { name: "Hire a Professional", href: "#/talent" },
-  { name: "Build a Team", href: "#/staffing" },
-  { name: "Managed Services", href: "#/services" },
 ];
 
 export const companyNavigationLinks: NavLink[] = [
@@ -27,10 +22,6 @@ export const mobileNavigationGroups: Array<{ title: string; links: NavLink[] }> 
   {
     title: "Navigation",
     links: primaryNavigationLinks,
-  },
-  {
-    title: "Solutions",
-    links: solutionsNavigationLinks,
   },
   {
     title: "Company",
